@@ -2,7 +2,7 @@
 Determines the fitness of a strategy by testing it against a pool of opponents.
 Used by the GA to decide which strategies survive to the next generation.
 """
-from game.engine import play_match
+from .engine import play_match
 
 def evaluate_strategy(strategy, opponent_pool, rounds=200):
     """

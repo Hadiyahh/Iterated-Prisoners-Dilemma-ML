@@ -2,7 +2,7 @@
 Logic for running simulations, including individual matches 
 and round-robin tournaments.
 """
-from game.payoff import payoff
+from .payoff import payoff
 
 def play_match(strategy1, strategy2, rounds=200):
     """

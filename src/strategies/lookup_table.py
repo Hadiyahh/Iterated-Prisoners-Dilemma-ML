@@ -2,7 +2,7 @@
 Translates a bitstring (chromosome) into game moves using memory.
 Crucial for Genetic Algorithm (Person B) and Machine Learning (Person C).
 """
-from strategies.baselines import Strategy
+from .baselines import Strategy
 
 class LookupTableStrategy(Strategy):
     """
