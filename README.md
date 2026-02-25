@@ -1,138 +1,114 @@
-# Iterated Prisoner’s Dilemma + Genetic Algorithm (Python)
+# Iterated Prisoner’s Dilemma — Optimization & ML
 
-A Python project for simulating the **Iterated Prisoner’s Dilemma (IPD)**, evaluating baseline strategies, and evolving lookup-table strategies with a **Genetic Algorithm (GA)**.
-
----
-
-## Project Goals
-
-- Simulate repeated Prisoner’s Dilemma matches.
-- Compare classic baseline strategies (ALLC, ALLD, TFT, etc.).
-- Evolve stronger 64-bit lookup-table strategies with GA.
-- Provide reusable modules for experiments and ML dataset generation.
+This project simulates the Iterated Prisoner’s Dilemma (IPD) and applies optimization methods (Genetic Algorithm, Hill Climb) to evolve strong strategies. It also includes utilities for baseline comparisons and dataset generation.
 
 ---
 
-## Folder Structure
+## ✅ What’s Included
+
+### **Strategies**
+- Baselines: `ALLC`, `ALLD`, `RAND`, `TFT`, `TF2T`, `STFT`
+- Lookup-table strategies (64‑bit chromosome)
+
+### **Optimization**
+- Genetic Algorithm (`src/optim/genetic_algorithm.py`)
+- Hill Climb (`src/optim/hill_climb.py`)
+- Experiment runners for GA/Hill/GA sweeps
+
+### **Evaluation**
+- Tournament and head‑to‑head play
+- Fitness evaluation against opponent pools
+
+### **Outputs**
+- Results saved to `results/tables/`
+- Figures placeholder in `results/figures/`
+
+---
+
+## 📁 Folder Structure
 
 ```text
 src/
   experiments/
-    opponent_pool.py       # Builds baseline + random opponent sets
-    run_baselines.py       # Runs baseline-vs-baseline evaluations
-    run_ga.py              # Runs GA optimization experiment
+    compare_best.py
+    opponent_pool.py
+    run_baselines.py
+    run_ga.py
+    run_ga_sweep.py
+    run_hill_climb.py
   game/
-    engine.py              # Match loop and action progression
-    evaluate.py            # Fitness/evaluation helpers
-    payoff.py              # PD payoff definitions
+    engine.py
+    evaluate.py
+    payoff.py
   ml/
-    build_dataset.py       # Dataset generation pipeline
+    build_dataset.py
   optim/
-    genetic_algorithm.py   # GA operators + training loop
+    genetic_algorithm.py
+    hill_climb.py
   strategies/
-    baselines.py           # Fixed strategy implementations
-    lookup_table.py        # 64-bit lookup-table strategy class
+    baselines.py
+    lookup_table.py
+
+results/
+  tables/
+    baselines_tournament.csv
+    ga_best.csv
+    ga_best_vs_baselines.csv
+    ga_fitness_history.csv
+    ga_runs_summary.csv
+    hill_best.csv
+    hill_history.csv
+  figures/
+    .gitkeep
+
+report/
+  optimization.md
 ```
 
 ---
 
-## Requirements
+## ▶️ How to Run
 
-- Python 3.10+ (recommended)
-- No external dependencies required unless added later
-
----
-
-## Run Instructions (Windows / PowerShell)
-
-From repository root:
-
-```powershell
-cd C:\Users\user\Downloads\VS\Iterated-Prisoners-Dilemma-ML
-```
-
-### 1) Run baseline experiment
+From repo root:
 
 ```powershell
 python -m src.experiments.run_baselines
-```
-
-### 2) Run GA experiment
-
-```powershell
 python -m src.experiments.run_ga
+python -m src.experiments.run_hill_climb
+python -m src.experiments.run_ga_sweep
+python -m src.experiments.compare_best
 ```
 
-Expected GA outputs include:
-- best fitness
-- best bitstring/chromosome
-- generation progress (if enabled in `genetic_algorithm.py`)
+---
+
+## 🧪 Results
+
+Generated results are stored in:
+
+```
+results/tables/
+```
+
+Examples:
+- `baselines_tournament.csv`
+- `ga_best.csv`
+- `ga_fitness_history.csv`
+- `ga_best_vs_baselines.csv`
+- `hill_best.csv`
 
 ---
 
-## Core Components
+## 📌 Notes
 
-### Strategies
-- **Baselines**: deterministic and simple adaptive policies (ALLC, ALLD, RAND, TFT, TF2T, STFT).
-- **LookupTableStrategy**: uses a 64-bit chromosome to map history states to actions.
-
-### Game Engine
-- `engine.py` plays repeated rounds between two strategies.
-- `payoff.py` defines reward mapping for (C/D) outcomes.
-
-### Evaluation
-- `evaluate.py` computes a strategy’s average score against an opponent pool.
-
-### Optimization
-- `genetic_algorithm.py`:
-  - initializes random chromosomes
-  - evaluates fitness
-  - selects parents (tournament)
-  - performs crossover + mutation
-  - keeps elites
-  - returns best strategy and training history
+- Always run from the **project root** so `src.*` imports resolve.
+- GA and Hill Climb runs are stochastic; set seeds for reproducibility.
+- To compare a GA‑best strategy vs baselines, update `BEST` in `compare_best.py`.
 
 ---
 
-## Typical Workflow
+## 📄 Report
 
-1. Build an opponent pool in `experiments/opponent_pool.py`.
-2. Run baseline benchmark (`run_baselines.py`) for reference.
-3. Run GA (`run_ga.py`) to evolve a stronger lookup-table strategy.
-4. Compare GA best fitness against baseline averages.
-
----
-
-## Common Issues
-
-### `Import "src...." could not be resolved`
-- Run scripts from the repository root using `python -m ...`.
-- Ensure VS Code opens the project root folder (not a subfolder).
-
-### No output when running a file
-- Confirm the file contains:
-  ```python
-  if __name__ == "__main__":
-      main()
-  ```
-
-### GA very slow
-- Reduce:
-  - `population_size`
-  - `generations`
-  - `rounds`
-
----
-
-## Suggested Next Improvements
-
-- Save GA `history` to CSV for plotting.
-- Add matplotlib learning curve visualization.
-- Add unit tests for:
-  - payoff correctness
-  - engine round accounting
-  - mutation/crossover behavior
-- Add CLI arguments for experiment configs.
+See: `report/optimization.md`
 
 ---
 
