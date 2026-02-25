@@ -1,0 +1,7 @@
+ga_strategy,opponent,rounds,ga_score,opponent_score,ga_per_round,opponent_per_round,ga_minus_opp
+GA_BEST,TFT,200,534,534,2.67,2.67,0
+GA_BEST,TF2T,200,664,334,3.32,1.67,330
+GA_BEST,ALLD,200,196,216,0.98,1.08,-20
+GA_BEST,ALLC,200,992,12,4.96,0.06,980
+GA_BEST,RAND,200,532,282,2.66,1.41,250
+GA_BEST,STFT,200,534,534,2.67,2.67,0

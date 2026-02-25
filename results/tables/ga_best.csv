@@ -1,0 +1,2 @@
+method,population_size,generations,crossover_rate,mutation_rate,elite_size,rounds,seed,best_fitness,best_bitstring
+GA,80,200,0.8,0.001,2,200,42,708.8125,1000011110111001010011101101111110111110111111101111011110101101
