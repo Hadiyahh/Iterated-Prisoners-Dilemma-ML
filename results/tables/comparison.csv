@@ -1,0 +1,9 @@
+name,source,rounds,seed,num_random_opponents,avg_score
+GA_BEST,ga,200,42,10,699.375
+ALLD,baseline,200,42,10,654.75
+HILL_BEST,hill,200,42,10,567.75
+TF2T,baseline,200,42,10,482.4375
+TFT,baseline,200,42,10,475.875
+RAND,baseline,200,42,10,465.75
+ALLC,baseline,200,42,10,449.25
+STFT,baseline,200,42,10,412.625
