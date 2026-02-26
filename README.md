@@ -73,6 +73,7 @@ From repo root:
 
 ```powershell
 python -m src.experiments.run_baselines
+# optional: python -m src.experiments.run_baselines --runs 500 --seed-start 42 --rounds 300
 python -m src.experiments.run_ga
 python -m src.experiments.run_hill_climb
 python -m src.experiments.run_ga_sweep
@@ -91,6 +92,7 @@ results/tables/
 
 Examples:
 - `baselines_tournament.csv`
+- `baselines_tournament_summary.csv`
 - `ga_best.csv`
 - `ga_fitness_history.csv`
 - `ga_best_vs_baselines.csv`
@@ -101,7 +103,7 @@ Examples:
 ## 📌 Notes
 
 - Always run from the **project root** so `src.*` imports resolve.
-- GA and Hill Climb runs are stochastic; set seeds for reproducibility.
+- Baseline, GA, and Hill Climb runs are stochastic; set seeds for reproducibility.
 - To compare a GA‑best strategy vs baselines, update `BEST` in `compare_best.py`.
 
 ---
